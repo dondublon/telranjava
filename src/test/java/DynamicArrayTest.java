@@ -104,6 +104,10 @@ class DynamicArrayTest {
 
     @org.junit.jupiter.api.Test
     void lastIndexOf() {
+        assertEquals(5, numbers.lastIndexOf(10));
+        assertEquals(3, numbers.lastIndexOf(-2));
+        assertEquals(-1, numbers.lastIndexOf(null));
+        assertEquals(-1, numbers.lastIndexOf(999));
     }
 
     @org.junit.jupiter.api.Test
