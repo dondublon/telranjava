@@ -139,16 +139,137 @@ class DynamicArrayTest {
         assertTrue(res);
     }
 
-
-    @org.junit.jupiter.api.Test
-    void testRemove() {
-    }
-
     @org.junit.jupiter.api.Test
     void contains() {
+        //{10,7,11,-2,13,10}
+        assertTrue(numbers.contains(10));
+        assertTrue(numbers.contains(-2));
+        assertFalse(numbers.contains(null));
+        assertFalse(numbers.contains(999));
     }
 
     @org.junit.jupiter.api.Test
     void toArray() {
+        //{10,7,11,-2,13,10}
+        assertArrayEquals(new Integer[]{10,7,11,-2,13,10}, numbers.toArray());
     }
+
+    @Test
+    void addStrings() {
+        strings.add("xyz");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz"}, strings.toArray());
+
+        strings.add("hello");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello"}, strings.toArray());
+
+        strings.add("test");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test"}, strings.toArray());
+
+        strings.add("foo");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo"}, strings.toArray());
+
+        strings.add("bar");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar"}, strings.toArray());
+
+        strings.add("baz");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz"}, strings.toArray());
+
+        strings.add("qwe");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe"}, strings.toArray());
+
+        strings.add("rty");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty"}, strings.toArray());
+
+        strings.add("ui");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui"}, strings.toArray());
+
+        strings.add("op");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op"}, strings.toArray());
+
+        strings.add("asdf");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf"}, strings.toArray());
+
+        strings.add("ghj");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf","ghj"}, strings.toArray());
+
+        strings.add("kl");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf","ghj","kl"}, strings.toArray());
+
+        strings.add("zxc");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf","ghj","kl","zxc"}, strings.toArray());
+
+        strings.add("vbn");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf","ghj","kl","zxc","vbn"}, strings.toArray());
+
+        strings.add("nm");
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc","xyz","hello","test","foo","bar","baz","qwe","rty","ui","op","asdf","ghj","kl","zxc","vbn","nm"}, strings.toArray());
+    }
+
+    @Test
+    void getStrings() {
+        assertEquals("abc", strings.get(0));
+        assertEquals("fg", strings.get(2));
+        assertEquals("abc", strings.get(3));
+        assertNull(strings.get(-1));
+        assertNull(strings.get(4));
+    }
+
+    @Test
+    void sizeStrings() {
+        assertEquals(4, strings.size());
+        strings.add("new");
+        assertEquals(5, strings.size());
+        strings.add("another");
+        assertEquals(6, strings.size());
+    }
+
+    @Test
+    void indexOfStrings() {
+        assertEquals(0, strings.indexOf("abc"));
+        assertEquals(2, strings.indexOf("fg"));
+        assertEquals(-1, strings.indexOf("zzz"));
+        assertEquals(-1, strings.indexOf(null));
+    }
+
+    @Test
+    void lastIndexOfStrings() {
+        assertEquals(3, strings.lastIndexOf("abc"));
+        assertEquals(2, strings.lastIndexOf("fg"));
+        assertEquals(-1, strings.lastIndexOf("zzz"));
+        assertEquals(-1, strings.lastIndexOf(null));
+    }
+
+    @Test
+    void removeByIndexStrings() {
+        var res = strings.removeByIndex(0);
+        assertArrayEquals(new String[]{"lmn","fg","abc"}, strings.toArray());
+        assertEquals("abc", res);
+        res = strings.removeByIndex(2);
+        assertEquals("abc", res);
+        assertArrayEquals(new String[]{"lmn","fg"}, strings.toArray());
+    }
+
+    @Test
+    void removeItemStrings() {
+        var res = strings.removeItem("fg");
+        assertArrayEquals(new String[]{"abc","lmn","abc"}, strings.toArray());
+        assertTrue(res);
+        res = strings.removeItem("zzz");
+        assertArrayEquals(new String[]{"abc","lmn","abc"}, strings.toArray());
+        assertFalse(res);
+    }
+
+    @Test
+    void containsStrings() {
+        assertTrue(strings.contains("abc"));
+        assertTrue(strings.contains("lmn"));
+        assertFalse(strings.contains("zzz"));
+        assertFalse(strings.contains(null));
+    }
+
+    @Test
+    void toArrayStrings() {
+        assertArrayEquals(new String[]{"abc","lmn","fg","abc"}, strings.toArray());
+    }
+
 }
