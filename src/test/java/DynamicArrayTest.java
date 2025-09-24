@@ -77,6 +77,11 @@ class DynamicArrayTest {
 
     @org.junit.jupiter.api.Test
     void get() {
+        assertEquals(10, numbers.get(0));
+        assertEquals(-2, numbers.get(3));
+        assertEquals(10, numbers.get(5));
+        assertNull(numbers.get(-1));
+        assertNull(numbers.get(6));
     }
 
     @org.junit.jupiter.api.Test
