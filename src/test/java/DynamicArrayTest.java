@@ -111,8 +111,34 @@ class DynamicArrayTest {
     }
 
     @org.junit.jupiter.api.Test
-    void remove() {
+    void removeByIndex() {
+        //{10,7,11,-2,13,10}
+        var res = numbers.removeByIndex(0);
+        assertArrayEquals(new Integer[]{7,11,-2,13,10}, numbers.toArray());
+        assertEquals(10, res);
+        res = numbers.removeByIndex(4);
+        assertEquals(10, res);
+        assertArrayEquals(new Integer[]{7,11,-2,13}, numbers.toArray());
+        res = numbers.removeByIndex(2);
+        assertArrayEquals(new Integer[]{7,11,13}, numbers.toArray());
+        assertEquals(-2, res);
+
     }
+
+    @org.junit.jupiter.api.Test
+    void removeItem() {
+        //{10,7,11,-2,13,10}
+        var res = numbers.removeItem(11);
+        assertArrayEquals(new Integer[]{10, 7,-2,13,10}, numbers.toArray());
+        assertTrue(res);
+        res = numbers.removeItem(4);
+        assertArrayEquals(new Integer[]{10, 7,-2,13,10}, numbers.toArray());
+        assertFalse(res);
+        res = numbers.removeItem(-2);
+        assertArrayEquals(new Integer[]{10, 7,13,10}, numbers.toArray());
+        assertTrue(res);
+    }
+
 
     @org.junit.jupiter.api.Test
     void testRemove() {

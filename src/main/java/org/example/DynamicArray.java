@@ -75,8 +75,7 @@ public class DynamicArray implements IDynamicArray {
         return -1;
     }
 
-    @Override
-    public Object remove(int index) {
+    public Object removeByIndex(int index) {
         if(index<0 || index>=size) return null;
         Object res=array[index];
         if (index<size-1)
@@ -85,10 +84,10 @@ public class DynamicArray implements IDynamicArray {
         return res;
     }
 
-    @Override
-    public boolean remove(Object obj) {
+    public boolean removeItem(Object obj) {
         int index=indexOf(obj);
-        return remove(index) !=null;
+        var removed = removeByIndex(index);
+        return removed !=null;
     }
 
     @Override
