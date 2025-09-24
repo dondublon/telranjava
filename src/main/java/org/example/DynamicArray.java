@@ -8,15 +8,16 @@ public class DynamicArray implements IDynamicArray {
     private static final int INITIAL_SIZE = 16;
 
     public DynamicArray(int initialSize){
-        if (initialSize>INITIAL_SIZE) array= new Object[initialSize];
-        else array = new Object[INITIAL_SIZE];
+        if (initialSize>INITIAL_SIZE)
+            array= new Object[initialSize];
+        else
+            array = new Object[INITIAL_SIZE];
     }
 
     public DynamicArray(){
         this(INITIAL_SIZE);
         System.out.println();
     }
-
 
 
     @Override
