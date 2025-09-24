@@ -96,6 +96,10 @@ class DynamicArrayTest {
 
     @org.junit.jupiter.api.Test
     void indexOf() {
+        assertEquals(0, numbers.indexOf(10));
+        assertEquals(3, numbers.indexOf(-2));
+        assertEquals(-1, numbers.indexOf(null));
+        assertEquals(-1, numbers.indexOf(999));
     }
 
     @org.junit.jupiter.api.Test
