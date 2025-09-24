@@ -86,6 +86,12 @@ class DynamicArrayTest {
 
     @org.junit.jupiter.api.Test
     void size() {
+        assertEquals(6, numbers.size());
+        for (int i=7; i<20; i++)
+        {
+            numbers.add(9);
+            assertEquals(i, numbers.size());
+        }
     }
 
     @org.junit.jupiter.api.Test
