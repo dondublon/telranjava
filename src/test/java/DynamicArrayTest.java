@@ -17,8 +17,7 @@ class DynamicArrayTest {
     @BeforeEach
     void setUp() {
         numbers = new DynamicArray(1);
-        for (int i=0; i<arNumbers.length;i++)
-            numbers.add(arNumbers[i]);
+        for (Integer arNumber : arNumbers) numbers.add(arNumber);
 
         strings = new DynamicArray();
         for (String str: arStrings)
