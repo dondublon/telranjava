@@ -57,6 +57,23 @@ public class Main {
                         new MyDate(4, Month.SEPTEMBER, 2024)
                 )));
         System.out.println("Vasya's bookings:");
-        System.out.println(hotel.getByPerson(vasya));
+        System.out.println(hotel.getBookingsByPerson(vasya));
+
+        System.out.println("Petyas's bookings:");
+        System.out.println(hotel.getBookingsByPerson(petya));
+        // Bookings for number 3:
+        System.out.println("Bookings for room 3:");
+        System.out.println(hotel.getBookingsByRoom(3));
+        System.out.println("Bookings for room 2:");
+        var booking_room_2 = hotel.getBookingsByRoom(2);
+        System.out.println(booking_room_2);
+        System.out.println("Bookings for room 5:");
+        System.out.println(hotel.getBookingsByRoom(5));
+        // Removing booking for room 2:
+        hotel.removeBooking(booking_room_2.get(1));
+        System.out.println("Bookings for room 2 after deleting:");
+        var booking_room_2_again = hotel.getBookingsByRoom(2);
+        System.out.println(booking_room_2_again);
+
     }
 }

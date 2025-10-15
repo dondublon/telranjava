@@ -15,15 +15,15 @@ public class Booking {
         this.byPerson = new HashMap<Person, List<BookItem>>();
     }
 
-    public Iterable<BookItem> getByPerson(Person person) {
+    public List<BookItem> getByPerson(Person person) {
         return this.byPerson.get(person);
     }
 
-    public Iterable<BookItem> getByRoom(int roomNumber) {
+    public List<BookItem> getByRoom(int roomNumber) {
         return this.byRoomNumber.get(roomNumber);
     }
 
-    public Iterable<BookItem> getByDate(MyDate date) {
+    public List<BookItem> getByDate(MyDate date) {
         // all bookings by date
         var result = new ArrayList<BookItem>();
         for (var books: this.byRoomNumber.values()) {
@@ -67,6 +67,22 @@ public class Booking {
             this.byPerson.put(person, new ArrayList<BookItem>());
         }
         this.byPerson.get(person).add(bookItem);
+        return true;
+    }
+
+    public boolean remove(BookItem bookItem) {
+        // Для простоты сравниваем только ссылки. Можно переделать на equals.
+        var room_number = bookItem.roomNumber;
+        var book_items_for_room = this.byRoomNumber.get(room_number);
+        if (book_items_for_room != null) {
+            book_items_for_room.removeIf(by_room -> by_room == bookItem);
+        }
+
+        for (var pers_book: this.byPerson.values()) {
+            if (pers_book != null) {
+                pers_book.removeIf(by_room -> by_room == bookItem);
+            }
+        }
         return true;
     }
 

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -61,15 +62,19 @@ public class Hotel {
         return this.booking.book(person, bookItem);
     }
 
-    public Iterable<BookItem> getByPerson(Person person) {
+    public List<BookItem> getBookingsByPerson(Person person) {
         return this.booking.getByPerson(person);
     }
 
-    public Iterable<BookItem> getByRoom(int roomNumber) {
+    public List<BookItem> getBookingsByRoom(int roomNumber) {
         return this.booking.getByRoom(roomNumber);
     }
 
-    public Iterable<BookItem> getByDate(MyDate getByDate) {
+    public List<BookItem> getBookingsByDate(MyDate getByDate) {
         return this.booking.getByDate(getByDate);
+    }
+    public boolean removeBooking(BookItem bookItem) {
+        // Для простоты - по ссылке
+        return this.booking.remove(bookItem);
     }
 }
