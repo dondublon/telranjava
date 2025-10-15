@@ -28,12 +28,14 @@ public class Hotel {
         return sb.toString();
     }
 
-    public void addRoom(int number, Suite suite) {
+    public boolean addRoom(int number, Suite suite) {
         if (this.suites.containsKey(number)) {
             System.out.printf("The suite number %s already presented: %s%n", number, this.suites.get(number));
+            return false;
         }
         else {
             this.suites.put(number, suite);
+            return true;
         }
 
     }
