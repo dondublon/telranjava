@@ -1,6 +1,6 @@
 package org.example;
 
-public class MyDate {
+public class MyDate implements Comparable<MyDate> {
     public int day;
     public Month month;
     public int year;
@@ -19,5 +19,12 @@ public class MyDate {
     }
     public String toString() {
         return String.format("%s.%s.%s", this.day, this.month, this.year);
+    }
+
+    @Override
+    public int compareTo(MyDate other) {
+        if (this.year != other.year) return this.year - other.year;
+        if (this.month.ordinal() != other.month.ordinal()) return this.month.ordinal() - other.month.ordinal();
+        return this.day - other.day;
     }
 }

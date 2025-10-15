@@ -77,4 +77,7 @@ public class Hotel {
         // Для простоты - по ссылке.
         return this.booking.remove(bookItem);
     }
+    public List<BookItem> getSortedBookings() {
+        return this.booking.getSortedItems();
+    }
 }

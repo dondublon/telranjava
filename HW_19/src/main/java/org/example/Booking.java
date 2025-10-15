@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Booking {
     // список бронирований
@@ -84,6 +81,16 @@ public class Booking {
             }
         }
         return true;
+    }
+
+    public List<BookItem> getSortedItems() {
+        // Все бронирования, отсортированные по дате заезда
+        var result = new ArrayList<BookItem>();
+        for (var by_rooms: this.byRoomNumber.values()) {
+            result.addAll(by_rooms);
+        }
+        result.sort(Comparator.comparing(b -> b.interval.start));
+        return result;
     }
 
 
