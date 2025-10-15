@@ -70,7 +70,7 @@ public class Main {
         System.out.println("Bookings for room 5:");
         System.out.println(hotel.getBookingsByRoom(5));
         // Removing booking for room 2:
-        hotel.removeBooking(booking_room_2.get(1));
+        ok = hotel.removeBooking(booking_room_2.get(1));
         System.out.println("Bookings for room 2 after deleting:");
         var booking_room_2_again = hotel.getBookingsByRoom(2);
         System.out.println(booking_room_2_again);

@@ -74,7 +74,7 @@ public class Hotel {
         return this.booking.getByDate(getByDate);
     }
     public boolean removeBooking(BookItem bookItem) {
-        // Для простоты - по ссылке
+        // Для простоты - по ссылке.
         return this.booking.remove(bookItem);
     }
 }
