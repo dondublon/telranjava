@@ -11,11 +11,23 @@ public class Main {
         // let's check error message
         hotel.addRoom(1, new Suite(SuiteType.JuniorSuite, (byte) 3));
         hotel.addRoom(2, new Suite(SuiteType.DeLuxe, (byte) 3));
+
         hotel.addRoom(3, new Suite(SuiteType.Studio, (byte) 3));
+        hotel.addRoom(5, new Suite(SuiteType.DeLuxe, (byte) 3));
         System.out.println(hotel);
-        // let's check its a real singleton:
+        // let's check it's a real singleton:
         var hotel2 = Hotel.getInstance();
         System.out.println(hotel2);
+
+        // lets found Deluxe:
+        var deluxes = hotel.getSuites(SuiteType.DeLuxe);
+        System.out.println("deluxes:");
+        System.out.println(deluxes);
+
+        // lets found President - empty for our case:
+        var President = hotel.getSuites(SuiteType.President);
+        System.out.println("President:");
+        System.out.println(President);
 
     }
 }

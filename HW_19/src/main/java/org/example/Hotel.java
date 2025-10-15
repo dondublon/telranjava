@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 
+
 public class Hotel {
     private static final Hotel INSTANCE = new Hotel();
     private final Map<Integer, Suite> suites;  // Suite by number
@@ -39,5 +40,16 @@ public class Hotel {
 
     public Suite getSuite(int number) {
         return this.suites.get(number);
+    }
+    public Map<Integer, Suite> getSuites(SuiteType type) {
+        var result = new HashMap<Integer, Suite>();
+        for (var num_suite : this.suites.entrySet()) {
+            var num = num_suite.getKey();
+            var suite = num_suite.getValue();
+            if (suite.type == type) {
+                result.put(num, suite);
+            }
+        }
+        return result;
     }
 }
