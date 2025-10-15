@@ -5,23 +5,28 @@ import java.util.HashMap;
 
 
 public class Hotel {
-    private final Map<Integer, Suite> Suites;  // Suite by number
+    private static final Hotel INSTANCE = new Hotel();
+    private final Map<Integer, Suite> suites;  // Suite by number
 
-    public Hotel() {
-        this.Suites = new HashMap<Integer, Suite>();
+    private Hotel() {
+        this.suites = new HashMap<Integer, Suite>();
+    }
+
+    public static Hotel getInstance() {
+        return INSTANCE;
     }
 
     public void addRoom(int number, Suite suite) {
-        if (this.Suites.containsKey(number)) {
-            System.out.printf("The suite number %s already presented: %s%n", number, this.Suites.get(number));
+        if (this.suites.containsKey(number)) {
+            System.out.printf("The suite number %s already presented: %s%n", number, this.suites.get(number));
         }
         else {
-            this.Suites.put(number, suite);
+            this.suites.put(number, suite);
         }
 
     }
 
     public Suite getSuite(int number) {
-        return this.Suites.get(number);
+        return this.suites.get(number);
     }
 }
