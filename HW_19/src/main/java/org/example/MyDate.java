@@ -17,4 +17,7 @@ public class MyDate {
         this.month = month;
         this.year = year;
     }
+    public String toString() {
+        return String.format("%s.%s.%s", this.day, this.month, this.year);
+    }
 }

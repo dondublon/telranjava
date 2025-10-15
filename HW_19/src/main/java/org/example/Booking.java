@@ -24,6 +24,7 @@ public class Booking {
     }
 
     public Iterable<BookItem> getByDate(MyDate date) {
+        // all bookings by date
         var result = new ArrayList<BookItem>();
         for (var books: this.byRoomNumber.values()) {
             for (var book: books) {
@@ -35,11 +36,32 @@ public class Booking {
         return result;
     }
 
+    public boolean isRoomBooked(int roomNumber, MyDate date) {
+        var roomBooks = this.byRoomNumber.get(roomNumber);
+        if (roomBooks == null) {
+            return false;
+        }
+        for (var book: roomBooks) {
+            if (book.interval.contains(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean book(Person person, BookItem bookItem) {
+        if (this.isRoomBooked(bookItem.roomNumber, bookItem.interval.start) ||
+                this.isRoomBooked(bookItem.roomNumber, bookItem.interval.end)
+                ) {
+            System.out.printf("The room %s is already booked for this dates.", bookItem.roomNumber);
+            return false;
+        };
+
         if (!this.byRoomNumber.containsKey(bookItem.roomNumber))
         {
             this.byRoomNumber.put(bookItem.roomNumber, new ArrayList<BookItem>());
         }
+
         this.byRoomNumber.get(bookItem.roomNumber).add(bookItem);
         if (!this.byPerson.containsKey(person)){
             this.byPerson.put(person, new ArrayList<BookItem>());

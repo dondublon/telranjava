@@ -29,5 +29,34 @@ public class Main {
         System.out.println("President:");
         System.out.println(President);
 
+        // Let's book something and check what is booked
+        var vasya = new Person("Vasily", "Vasiliev");
+        var petya = new Person("Peter", "Petrov");
+
+        var booked = hotel.book(vasya,
+                new BookItem(2, new DateInterval(
+                        new MyDate(1, Month.AUGUST, 2024),
+                        new MyDate(10, Month.AUGUST, 2024)
+                )));
+        var booked2 = hotel.book(vasya,
+                new BookItem(3, new DateInterval(
+                        new MyDate(2, Month.SEPTEMBER, 2024),
+                        new MyDate(20, Month.OCTOBER, 2024)
+                )));
+
+        var booked3 = hotel.book(petya,
+                new BookItem(2, new DateInterval(
+                        new MyDate(1, Month.AUGUST, 2024),
+                        new MyDate(10, Month.AUGUST, 2024)
+                )));
+        // We expect fail here.
+        System.out.println("Trying to book room 2");
+        var booked4 = hotel.book(petya,
+                new BookItem(2, new DateInterval(
+                        new MyDate(3, Month.SEPTEMBER, 2024),
+                        new MyDate(4, Month.SEPTEMBER, 2024)
+                )));
+        System.out.println("Vasya's bookings:");
+        System.out.println(hotel.getByPerson(vasya));
     }
 }

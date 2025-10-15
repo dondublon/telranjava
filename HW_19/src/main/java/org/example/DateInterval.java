@@ -1,8 +1,8 @@
 package org.example;
 
 public class DateInterval {
-    private final MyDate start;
-    private MyDate end;
+    public final MyDate start;
+    public MyDate end;
 
     public DateInterval(MyDate start, MyDate end) {
         if (compare(start, end) > 0) {
@@ -22,5 +22,9 @@ public class DateInterval {
         if (d1.year != d2.year) return d1.year - d2.year;
         if (d1.month.ordinal() != d2.month.ordinal()) return d1.month.ordinal() - d2.month.ordinal();
         return d1.day - d2.day;
+    }
+
+    public String toString() {
+        return String.format("{%s - %s}", this.start, this.end);
     }
 }
