@@ -1,7 +1,7 @@
 package org.example;
 
 public class Suite {
-    public Integer Number;
+    public int Number;
     public SuiteType Type;
-    public Byte places; // sleping places
+    public byte places; // sleeping places
 }
