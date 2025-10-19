@@ -12,6 +12,16 @@ public class Booking {
         this.byPerson = new HashMap<Person, List<BookItem>>();
     }
 
+    public Boolean addCustomer(Person person) {
+        if (!this.byPerson.containsKey(person))
+        {
+            this.byPerson.put(person, new ArrayList<BookItem>());
+            return true;
+        }
+        else
+            return true;
+    }
+
     public List<BookItem> getByPerson(Person person) {
         return this.byPerson.get(person);
     }

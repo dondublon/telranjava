@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -78,6 +80,28 @@ public class Main {
         System.out.println("Bookings for room 2 after deleting:");
         var booking_room_2_again = hotel.getBookingsByRoom(2);
         System.out.println(booking_room_2_again);
+
+        // Interaction with console:
+        var scanner = new Scanner(System.in);
+        var parser = new Parser(scanner);
+
+        // будем запрашивать в бесконечном цикле:
+        while (true) {
+            try {
+                var person = parser.inputPerson();
+                var room_n = parser.inputRoomNumber();
+                var date1 = parser.inputDate(" дату въезда");
+                var date2 = parser.inputDate(" дату выезда");
+                hotel.book(person, new BookItem(room_n, new DateInterval(date1, date2)));
+                var existing_bookings = hotel.getBookingsByPerson(person);
+                System.out.println("Ваши бронирования:");
+                System.out.println(existing_bookings);
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("Ошибка в формате данных: " + e.getMessage());
+            }
+
+        }
 
     }
 }

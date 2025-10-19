@@ -12,5 +12,10 @@ public enum Month {
     SEPTEMBER,
     OCTOBER,
     NOVEMBER,
-    DECEMBER
+    DECEMBER;
+
+    public static Month fromInt(int m) {
+        if (m < 1 || m > 12) throw new IllegalArgumentException("month out of range: " + m);
+        return Month.values()[m - 1];
+    }
 }
